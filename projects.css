@@ -1,0 +1,328 @@
+/* ==========================================================================
+   Projects Page Styles
+   ========================================================================== */
+.projects-container {
+  min-height: 100vh;
+  padding-top: 1rem;
+  background: linear-gradient(
+    135deg,
+    rgba(8, 15, 40, 0) 0%,
+    rgba(12, 28, 61, 0.15) 20%,
+    rgba(16, 42, 82, 0.25) 40%,
+    rgba(19, 55, 104, 0.35) 60%,
+    rgba(21, 67, 127, 0.4) 80%,
+    rgba(23, 78, 148, 0.45) 100%
+  );
+}
+
+/* ==========================================================================
+   Projects Introduction Section
+   ========================================================================== */
+.projects-intro {
+  min-height: 50vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  padding-top: 2rem;
+  background: url("./image/pexels-bess-hamiti-83687-36487.jpg") center/cover
+    no-repeat;
+  position: relative;
+}
+
+.projects-intro::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.intro-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  animation: fadeInUp 1s ease-out;
+  position: relative;
+  z-index: 2;
+}
+
+.projects-intro h1 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  animation: fadeInUp 1s ease-out;
+}
+
+.projects-intro .subtitle {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+  animation: fadeInUp 1s ease-out 0.2s backwards;
+}
+
+.projects-intro .description {
+  font-size: 1rem;
+  line-height: 1.7;
+  max-width: 800px;
+  margin: 0 auto;
+  opacity: 0.8;
+  animation: fadeInUp 1s ease-out 0.4s backwards;
+}
+
+/* ==========================================================================
+   Portfolio Section
+   ========================================================================== */
+.portfolio {
+  padding: 6rem 2rem;
+  position: relative;
+}
+
+.portfolio h2 {
+  text-align: center;
+  color: white;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.portfolio h2::after {
+  content: "";
+  position: absolute;
+  bottom: -1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.5),
+    transparent
+  );
+}
+
+.portfolio-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  justify-content: center;
+}
+
+/* ==========================================================================
+   Project Cards
+   ========================================================================== */
+.project-card {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.5s ease;
+  opacity: 0;
+  transform: translateY(30px);
+  max-width: 100%;
+  max-height: 300px;
+}
+
+.project-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.project-image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  line-height: 0;
+  max-height: 300px;
+}
+
+.project-image img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-height: 250px;
+  max-width: 300px;
+  margin: 0 auto;
+  transition: transform 0.5s ease;
+  object-fit: contain;
+}
+
+.project-card:hover .project-image img {
+  transform: scale(1.1);
+}
+
+.project-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0.5rem;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  color: white;
+  text-align: center;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover .project-info {
+  transform: translateY(0);
+}
+
+.project-info h3 {
+  font-size: 0.9rem;
+  margin-bottom: 0.2rem;
+  font-weight: 500;
+}
+
+.project-info p {
+  font-size: 0.75rem;
+  opacity: 0.9;
+  margin: 0;
+}
+
+/* ==========================================================================
+   Particles Animation (reused from main styles)
+   ========================================================================== */
+.particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.particle {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  animation: float 6s ease-in-out infinite;
+}
+
+.particle:nth-child(1) {
+  width: 20px;
+  height: 20px;
+  top: 20%;
+  left: 10%;
+}
+.particle:nth-child(2) {
+  width: 15px;
+  height: 15px;
+  top: 60%;
+  left: 80%;
+  animation-delay: 2s;
+}
+.particle:nth-child(3) {
+  width: 25px;
+  height: 25px;
+  top: 40%;
+  left: 90%;
+  animation-delay: 4s;
+}
+.particle:nth-child(4) {
+  width: 12px;
+  height: 12px;
+  top: 80%;
+  left: 20%;
+  animation-delay: 1s;
+}
+.particle:nth-child(5) {
+  width: 18px;
+  height: 18px;
+  top: 30%;
+  left: 70%;
+  animation-delay: 3s;
+}
+
+/* ==========================================================================
+   Contact CTA Section
+   ========================================================================== */
+.contact-cta {
+  padding: 6rem 2rem;
+  text-align: center;
+  color: white;
+  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.4));
+}
+
+.cta-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.contact-cta h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.contact-cta p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+.contact-cta .btn {
+  font-size: 1.1rem;
+  padding: 15px 40px;
+}
+
+/* ==========================================================================
+   Animations
+   ========================================================================== */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================================================
+   Responsive Design
+   ========================================================================== */
+@media (max-width: 768px) {
+  .projects-intro h1 {
+    font-size: 2rem;
+  }
+
+  .projects-intro .subtitle {
+    font-size: 1.2rem;
+  }
+
+  .portfolio-grid {
+    padding: 0 1rem;
+  }
+
+  .contact-cta h2 {
+    font-size: 2rem;
+  }
+
+  .contact-cta p {
+    font-size: 1rem;
+  }
+}

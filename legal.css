@@ -1,0 +1,74 @@
+/* ==========================================================================
+   Legal Content Styles
+   ========================================================================== */
+.legal-content {
+  max-width: 800px;
+  margin: 120px auto 60px;
+  padding: 2.5rem;
+  color: white;
+  background: rgba(40, 40, 40, 0.7);
+  border-radius: 8px;
+}
+
+.legal-content h1 {
+  font-size: 2.2rem;
+  margin-bottom: 2.5rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+.legal-content section {
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.legal-content section:last-child {
+  border-bottom: none;
+}
+
+.legal-content h2 {
+  font-size: 1.4rem;
+  margin-bottom: 1.2rem;
+  font-weight: 500;
+}
+
+.legal-content p,
+.legal-content ul {
+  margin-bottom: 1rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.legal-content ul {
+  list-style: none;
+  padding-left: 1rem;
+}
+
+.legal-content ul li {
+  margin-bottom: 0.7rem;
+  position: relative;
+  padding-left: 1.2rem;
+}
+
+.legal-content ul li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+@media (max-width: 768px) {
+  .legal-content {
+    margin: 100px 1.5rem 40px;
+    padding: 1.5rem;
+  }
+
+  .legal-content h1 {
+    font-size: 1.8rem;
+  }
+
+  .legal-content h2 {
+    font-size: 1.3rem;
+  }
+}

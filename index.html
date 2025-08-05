@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Accueil</title>
+    <link rel="icon" type="image/jpg" href="images/ChatGPT Image 4 août 2025, 14_15_13.jpg">
+    <link rel="stylesheet" href="styles.css?v=1" />
+    <link rel="stylesheet" href="animations.css" />
+  </head>
+  <body>
+    <ul class="nav-links">
+      <button class="nav-close" aria-label="Fermer le menu"></button>
+      <li><a href="#accueil">Accueil</a></li>
+      <li><a href="projets.html">Projets</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+
+    <div class="content-wrapper">
+    <!-- Header avec navigation -->
+    <header>
+      <nav>
+        <a href="#" class="logo">FonskiPro</a>
+        <ul class="nav-links-desktop">
+          <li><a href="#accueil">Accueil</a></li>
+          <li><a href="projets.html">Projets</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <button class="burger-menu" aria-label="Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </nav>
+    </header>
+
+    <!-- Section héro -->
+    <section class="hero" id="accueil">
+      <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+      </div>
+
+      <div class="hero-content">
+        <h1>Bienvenue chez FonskiPro !</h1>
+        <p class="subtitle">Design • Performance • Innovation</p>
+        
+        <div class="hero-text">
+          <p>
+            Nous créons des sites web modernes, performants et design, taillés sur mesure pour booster votre business. Que vous soyez une start-up ambitieuse, une PME innovante ou une entreprise établie, nous adaptons chaque projet à vos besoins uniques.
+          </p>
+          
+          <p>
+            Notre secret ? Allier créativité, technique et flexibilité pour vous offrir bien plus qu'un simple site : une véritable expérience digitale qui captive et transforme vos visiteurs en clients fidèles.
+          </p>
+          
+          <p>
+            Vous voulez découvrir comment un design puissant peut changer la donne pour votre entreprise ? Explorez nos réalisations et laissez-nous vous surprendre.
+          </p>
+        </div>
+
+        <div class="cta-buttons">
+          <a href="projets.html" class="btn btn-primary hover-lift">Voir mes projets</a>
+          <a href="contact.html" class="btn btn-secondary hover-lift">Me contacter</a>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      // Gestion du menu burger
+      const burgerMenu = document.querySelector(".burger-menu");
+      const navLinks = document.querySelector(".nav-links");
+      const navClose = document.querySelector(".nav-close");
+      const overlay = document.querySelector(".overlay");
+
+      function toggleMenu() {
+        burgerMenu.classList.toggle("active");
+        navLinks.classList.toggle("active");
+        document.body.classList.toggle("menu-active");
+        document.body.style.overflow = navLinks.classList.contains("active")
+          ? "hidden"
+          : "auto";
+      }
+
+      burgerMenu.addEventListener("click", toggleMenu);
+      if (navClose) navClose.addEventListener("click", toggleMenu);
+      overlay.addEventListener("click", toggleMenu);
+      document.querySelectorAll(".nav-links a").forEach((link) => {
+        link.addEventListener("click", () => {
+          if (navLinks.classList.contains("active")) {
+            toggleMenu();
+          }
+        });
+      });
+
+      // Animation smooth scroll pour les liens de navigation
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        });
+      });
+
+      // Animation du header au scroll
+      window.addEventListener("scroll", function () {
+        const header = document.querySelector("header");
+        if (window.scrollY > 100) {
+          header.style.background = "rgba(0, 0, 0, 0.4)";
+          header.style.boxShadow = "0 2px 20px rgba(0, 0, 0, 0.2)";
+        } else {
+          header.style.background = "rgba(0, 0, 0, 0.2)";
+          header.style.boxShadow = "none";
+        }
+      });
+
+      // Animation des particules au mouvement de la souris
+      document.addEventListener("mousemove", function (e) {
+        const particles = document.querySelectorAll(".particle");
+        const x = e.clientX / window.innerWidth;
+        const y = e.clientY / window.innerHeight;
+
+        particles.forEach((particle, index) => {
+          const speed = (index + 1) * 0.5;
+          const xPos = x * speed * 50;
+          const yPos = y * speed * 50;
+
+          particle.style.transform = `translate(${xPos}px, ${yPos}px)`;
+        });
+      });
+    </script>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <!-- Colonne À propos -->
+        <div class="footer-section">
+          <h3>À propos</h3>
+          <p>Développeur web passionné, je crée des solutions digitales sur mesure pour répondre à vos besoins. Expert en technologies web modernes.</p>
+        </div>
+
+        <!-- Colonne Navigation Rapide -->
+        <div class="footer-section">
+          <h3>Navigation Rapide</h3>
+          <ul>
+            <li><a href="#accueil" class="hover-lift">Accueil</a></li>
+            <li><a href="projets.html" class="hover-lift">Projets</a></li>
+            <li><a href="contact.html" class="hover-lift">Contact</a></li>
+            <li><a href="mentions-legales.html" class="hover-lift">Mentions légales</a></li>
+          </ul>
+        </div>
+
+        <!-- Colonne Services -->
+        <div class="footer-section">
+          <h3>Services</h3>
+          <ul>
+            <li>Développement Web</li>
+            <li>Design UI/UX</li>
+            <li>Design Graphique</li>
+            <li>Création de Logos</li>
+            <li>Design Publicitaire</li>
+            <li>Design pour Réseaux Sociaux</li>
+          </ul>
+        </div>
+
+        <!-- Colonne Contact -->
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <div class="contact-info">
+            <p><i class="icon-email"></i> fonskipro@gmail.com</p>
+            <p><i class="icon-phone"></i> +33 (0)6 01 81 58 63</p>
+            <p><i class="icon-location"></i> Kingersheim, France</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Barre de copyright -->
+      <div class="footer-bottom">
+        <p>&copy; 2025 FonskiPro. Tous droits réservés.</p>
+        <p><a href="mentions-legales.html">Mentions légales</a> | <a href="politique-confidentialite.html">Politique de confidentialité</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

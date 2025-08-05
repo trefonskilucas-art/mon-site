@@ -1,0 +1,91 @@
+/* ==========================================================================
+   Privacy Policy Styles
+   ========================================================================== */
+.privacy-content {
+  max-width: 800px;
+  margin: 120px auto 60px;
+  padding: 2.5rem;
+  color: white;
+  background: rgba(20, 20, 20, 0.7);
+  border-radius: 8px;
+}
+
+.privacy-content h1 {
+  font-size: 2.2rem;
+  margin-bottom: 2.5rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+.privacy-content section {
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.privacy-content section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.privacy-content h2 {
+  font-size: 1.4rem;
+  margin-bottom: 1.2rem;
+  font-weight: 500;
+}
+
+.privacy-content p {
+  margin-bottom: 1rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.privacy-content ul {
+  margin: 1rem 0;
+  padding-left: 1.2rem;
+}
+
+.privacy-content ul li {
+  margin-bottom: 0.7rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.9);
+  position: relative;
+}
+
+.privacy-content ul li::before {
+  content: "—";
+  position: absolute;
+  left: -1.2rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.contact-details {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1.5rem;
+  border-radius: 6px;
+  margin-top: 1rem;
+}
+
+.contact-details p {
+  margin-bottom: 0.5rem;
+}
+
+.contact-details p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .privacy-content {
+    margin: 100px 1.5rem 40px;
+    padding: 1.5rem;
+  }
+
+  .privacy-content h1 {
+    font-size: 1.8rem;
+  }
+
+  .privacy-content h2 {
+    font-size: 1.3rem;
+  }
+}

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact</title>
+    <link rel="icon" type="image/jpg" href="images/ChatGPT Image 4 août 2025, 14_15_13.jpg">
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="contact.css" />
+    <link rel="stylesheet" href="mobile-menu.css" />
+  </head>
+  <body>
+    <div class="overlay"></div>
+    
+    <ul class="nav-links">
+      <button class="nav-close" aria-label="Fermer le menu"></button>
+      <li><a href="index.html#accueil">Accueil</a></li>
+      <li><a href="projets.html">Projets</a></li>
+      <li><a href="#contact" class="active">Contact</a></li>
+    </ul>
+    
+    <div class="content-wrapper">
+    <!-- Header avec navigation -->
+    <header>
+      <nav>
+        <a href="index.html" class="logo">FonskiPro</a>
+        <ul class="nav-links-desktop">
+          <li><a href="index.html#accueil">Accueil</a></li>
+          <li><a href="projets.html">Projets</a></li>
+          <li><a href="#contact" class="active">Contact</a></li>
+        </ul>
+        <button class="burger-menu" aria-label="Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </nav>
+    </header>
+
+    <main class="contact-content">
+      <h1>Contactez-moi</h1>
+      
+      <section class="contact-info-section">
+        <h2>Mes Coordonnées</h2>
+        <div class="contact-cards">
+          <div class="contact-card">
+            <i class="icon-email"></i>
+            <h3>Email</h3>
+            <p>fonskipro@gmail.com</p>
+          </div>
+          <div class="contact-card">
+            <i class="icon-phone"></i>
+            <h3>Téléphone</h3>
+            <p>+33 (0)6 01 81 58 63</p>
+          </div>
+          <div class="contact-card">
+            <i class="icon-location"></i>
+            <h3>Localisation</h3>
+            <p>Kingersheim, France</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="contact-form-section">
+        <h2>Formulaire de Contact</h2>
+        <p>Pour toute demande d'information, n'hésitez pas à me contacter via ce formulaire.</p>
+        
+        <form id="contactForm" class="contact-form">
+          <div id="formMessage" class="form-message" style="display: none;"></div>
+          
+          <div class="form-group">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" required placeholder="Votre adresse email">
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Téléphone *</label>
+            <input type="tel" id="phone" name="phone" required placeholder="Votre numéro de téléphone">
+          </div>
+
+          <div class="form-group">
+            <label for="service">Service souhaité *</label>
+            <div class="custom-select">
+              <div class="select-selected">Sélectionnez un service</div>
+              <div class="select-items select-hide"></div>
+              <select id="service" name="service" required style="display: none;">
+                <option value="">Sélectionnez un service</option>
+                <option value="web">Site Web</option>
+                <option value="logo">Design Logo</option>
+                <option value="pub">Design Publicité</option>
+                <option value="social">Design Réseaux Sociaux</option>
+                <option value="autres">Autres</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message (optionnel)</label>
+            <textarea id="message" name="message" rows="5" placeholder="Détaillez votre projet..."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Envoyer ma demande</button>
+        </form>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer simple-footer">
+      <div class="footer-bottom">
+        <nav class="footer-nav">
+          <a href="politique-confidentialite.html">Politique de confidentialité</a>
+          <span class="separator">|</span>
+          <a href="mentions-legales.html">Mentions légales</a>
+        </nav>
+        <p>&copy; 2025 FonskiPro. Tous droits réservés.</p>
+      </div>
+    </footer>
+
+    <script>
+      // Gestion du menu burger
+      const burgerMenu = document.querySelector(".burger-menu");
+      const navLinks = document.querySelector(".nav-links");
+      const navClose = document.querySelector(".nav-close");
+      const overlay = document.querySelector(".overlay");
+
+      function toggleMenu() {
+        burgerMenu.classList.toggle("active");
+        navLinks.classList.toggle("active");
+        document.body.classList.toggle("menu-active");
+        document.body.style.overflow = navLinks.classList.contains("active") ? "hidden" : "";
+      }
+
+      burgerMenu.addEventListener("click", toggleMenu);
+      if (navClose) navClose.addEventListener("click", toggleMenu);
+      overlay.addEventListener("click", toggleMenu);
+      document.querySelectorAll(".nav-links a").forEach((link) => {
+        link.addEventListener("click", () => {
+          if (navLinks.classList.contains("active")) {
+            toggleMenu();
+          }
+        });
+      });
+
+      // Validation du formulaire
+      document.getElementById('contactForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const formMessage = document.getElementById('formMessage');
+        const submitButton = this.querySelector('button[type="submit"]');
+        
+        try {
+          // Désactiver le bouton pendant l'envoi
+          submitButton.disabled = true;
+          submitButton.textContent = 'Envoi en cours...';
+          
+          const formData = {
+            email: document.getElementById('email').value,
+            phone: document.getElementById('phone').value,
+            service: document.getElementById('service').value,
+            message: document.getElementById('message').value
+          };
+
+          const response = await fetch('http://localhost:5000/api/contact', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData)
+          });
+
+          const data = await response.json();
+
+          if (response.ok) {
+            // Succès
+            formMessage.textContent = 'Message envoyé avec succès !';
+            formMessage.className = 'form-message success';
+            this.reset();
+          } else {
+            // Erreur avec message du serveur
+            throw new Error(data.error || 'Une erreur est survenue');
+          }
+        } catch (error) {
+          // Erreur
+          formMessage.textContent = error.message;
+          formMessage.className = 'form-message error';
+        } finally {
+          // Réactiver le bouton
+          submitButton.disabled = false;
+          submitButton.textContent = 'Envoyer ma demande';
+          formMessage.style.display = 'block';
+        }
+      });
+
+      // Custom Select Menu
+      const customSelect = document.querySelector('.custom-select');
+      const selectSelected = customSelect.querySelector('.select-selected');
+      const selectItems = customSelect.querySelector('.select-items');
+      const hiddenSelect = customSelect.querySelector('select');
+
+      // Générer les divs à partir des options
+      hiddenSelect.querySelectorAll('option').forEach(option => {
+        const div = document.createElement('div');
+        div.textContent = option.textContent;
+        div.setAttribute('data-value', option.value);
+        selectItems.appendChild(div);
+      });
+
+      // Ouvre/ferme le menu déroulant au clic
+      selectSelected.addEventListener('click', function(e) {
+        e.stopPropagation();
+        this.classList.toggle('select-arrow-active');
+        selectItems.classList.toggle('select-hide');
+        selectItems.classList.toggle('active');
+      });
+
+      // Gère la sélection d'une option
+      const optionDivs = selectItems.querySelectorAll('div');
+      optionDivs.forEach(div => {
+        div.addEventListener('click', function(e) {
+          const value = this.getAttribute('data-value');
+          const text = this.textContent;
+
+          // Met à jour le texte affiché
+          selectSelected.textContent = text;
+          
+          // Met à jour le select caché
+          hiddenSelect.value = value;
+
+          // Déclenche l'événement change sur le select
+          const event = new Event('change', { bubbles: true });
+          hiddenSelect.dispatchEvent(event);
+
+          // Supprime la classe selected de toutes les options
+          optionDivs.forEach(d => d.classList.remove('same-as-selected'));
+          
+          // Ajoute la classe selected à l'option choisie
+          this.classList.add('same-as-selected');
+
+          // Ferme le menu déroulant
+          selectSelected.click();
+        });
+      });
+
+      // Ferme le menu déroulant si on clique ailleurs sur la page
+      document.addEventListener('click', function(e) {
+        if (e.target !== selectSelected) {
+          selectSelected.classList.remove('select-arrow-active');
+          selectItems.classList.add('select-hide');
+          selectItems.classList.remove('active');
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Politique de Confidentialité - FonskiPro</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="privacy.css" />
+  </head>
+  <body>
+    <div class="overlay"></div>
+    <div class="content-wrapper">
+      <!-- Header avec navigation -->
+      <header>
+        <nav>
+          <a href="index.html" class="logo">FonskiPro</a>
+          <button class="burger-menu" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+          <ul class="nav-links">
+            <li><a href="index.html#accueil">Accueil</a></li>
+            <li><a href="index.html#projets">Projets</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <!-- Contenu Politique de confidentialité -->
+      <main class="privacy-content">
+        <h1>Politique de Confidentialité</h1>
+
+        <section>
+          <h2>1. Collecte des informations</h2>
+          <p>
+            Nous collectons les informations suivantes lorsque vous utilisez
+            notre site :
+          </p>
+          <ul>
+            <li>
+              Informations de contact (nom, email) lors de l'utilisation du
+              formulaire de contact
+            </li>
+            <li>Données de navigation anonymes à des fins d'analyse</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>2. Utilisation des informations</h2>
+          <p>Les informations collectées sont utilisées pour :</p>
+          <ul>
+            <li>Répondre à vos demandes de contact</li>
+            <li>Améliorer l'expérience utilisateur du site</li>
+            <li>
+              Vous tenir informé de nos services (uniquement avec votre
+              consentement)
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>3. Protection des données</h2>
+          <p>
+            Nous mettons en place des mesures de sécurité pour protéger vos
+            informations :
+          </p>
+          <ul>
+            <li>Stockage sécurisé des données</li>
+            <li>Accès limité aux informations personnelles</li>
+            <li>Protocoles de sécurité modernes</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>4. Vos droits</h2>
+          <p>Conformément au RGPD, vous disposez des droits suivants :</p>
+          <ul>
+            <li>Droit d'accès à vos données personnelles</li>
+            <li>Droit de rectification</li>
+            <li>Droit à l'effacement ("droit à l'oubli")</li>
+            <li>Droit à la limitation du traitement</li>
+            <li>Droit à la portabilité des données</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>5. Contact</h2>
+          <p>
+            Pour toute question concernant notre politique de confidentialité :
+          </p>
+          <div class="contact-details">
+            <p>Email : fonskipro@gmail.com</p>
+            <p>Téléphone : +33 (0)6 01 81 58 63</p>
+            <p>Adresse : Kingersheim, France</p>
+          </div>
+        </section>
+      </main>
+    </div>
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <div class="contact-info">
+            <p><i class="icon-email"></i> fonskipro@gmail.com</p>
+            <p><i class="icon-phone"></i> +33 (0)6 01 81 58 63</p>
+            <p><i class="icon-location"></i> Kingersheim, France</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2025 FonskiPro. Tous droits réservés.</p>
+      </div>
+    </footer>
+
+    <script>
+      // Gestion du menu burger
+      const burgerMenu = document.querySelector(".burger-menu");
+      const navLinks = document.querySelector(".nav-links");
+      const overlay = document.querySelector(".overlay");
+
+      function toggleMenu() {
+        burgerMenu.classList.toggle("active");
+        navLinks.classList.toggle("active");
+        overlay.classList.toggle("active");
+        document.body.style.overflow = navLinks.classList.contains("active")
+          ? "hidden"
+          : "";
+      }
+
+      burgerMenu.addEventListener("click", toggleMenu);
+      overlay.addEventListener("click", toggleMenu);
+      document.querySelectorAll(".nav-links a").forEach((link) => {
+        link.addEventListener("click", () => {
+          if (navLinks.classList.contains("active")) {
+            toggleMenu();
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,13 @@
+/* ==========================================================================
+   Mobile Menu - Fichier de compatibilité (styles principaux dans styles.css)
+   ========================================================================== */
+@media (max-width: 768px) {
+  .nav-links {
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+  }
+
+  .nav-links a {
+    font-size: 1.3rem;
+  }
+}
